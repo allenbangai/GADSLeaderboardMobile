@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
 import com.example.gadsleaderboardmobile.R;
 
@@ -95,6 +96,8 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
         holder.name.setText(learningLeadersModel.getName());
         holder.hours.setText(learningLeadersModel.getHours() + " learning hours, ");
         holder.country.setText(learningLeadersModel.getCountry());
+        //loading image with glide
+        Glide.with(context).load(learningLeadersModel.getBadgeUrl()).centerCrop().into(holder.badgeUrl);
     }
 
     /**
@@ -104,6 +107,6 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return learningLeadersModels.size();
     }
 }
