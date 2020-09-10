@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Launch"
+    android:background="@drawable/launch"
     tools:context=".SubmissionActivity">
 
     <include
@@ -73,11 +73,9 @@
                 android:paddingStart="8dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorGreyPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="19sp"/>
 
             <EditText
                 android:id="@+id/last_name"
@@ -90,11 +88,9 @@
                 android:paddingStart="8dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorGreyPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="19sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -114,11 +110,9 @@
                 android:paddingStart="8dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorGreyPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="19sp" />
 
         </LinearLayout>
 
@@ -139,11 +133,9 @@
                 android:paddingStart="8dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorGreyPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textSize="19sp"/>
 
         </LinearLayout>
 
@@ -164,10 +156,10 @@
                 android:textColorHint="@color/colorWhite"
                 android:textAlignment="center"
                 android:textSize="22sp"
-                android:paddingStart="35dp"
-                android:paddingEnd="35dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:background="@drawable/circular_background3"/>
         </LinearLayout>
 
