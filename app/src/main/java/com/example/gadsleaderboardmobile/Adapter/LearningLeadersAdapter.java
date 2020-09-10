@@ -1,5 +1,8 @@
 package com.example.gadsleaderboardmobile.Adapter;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,7 +12,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
+import com.example.gadsleaderboardmobile.R;
+
+import java.util.List;
+
 public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeadersAdapter.ViewHolder> {
+    private Context context;
+    private List<LearningLeadersModel> learningLeadersModels;
+    private LearningLeadersModel learningLeadersModel;
+
+    public LearningLeadersAdapter(Context context, List<LearningLeadersModel> learningLeadersModels) {
+        this.context = context;
+        this.learningLeadersModels = learningLeadersModels;
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name, hours, country;
@@ -17,6 +33,10 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.learning_name);
+            hours = itemView.findViewById(R.id.learning_hours);
+            country = itemView.findViewById(R.id.learning_country);
+            badgeUrl = itemView.findViewById(R.id.learning_imageView);
         }
     }
 
@@ -43,7 +63,8 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(context).inflate(R.layout.item_view_leaening_leaders, parent, false);
+        return new LearningLeadersAdapter.ViewHolder(view);
     }
 
     /**
@@ -66,9 +87,14 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
      *                 item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        learningLeadersModel = learningLeadersModels.get(position);
 
+        holder.name.setText(learningLeadersModel.getName());
+        holder.hours.setText(learningLeadersModel.getHours() + " learning hours, ");
+        holder.country.setText(learningLeadersModel.getCountry());
     }
 
     /**
