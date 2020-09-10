@@ -4,4 +4,6 @@
     <string name="leaderboard">LEADERBOARD</string>
     <string name="skill_iq_leaders">Skill IQ Leaders</string>
     <string name="learning_leaders">Learning Leaders</string>
+    <string name="john_doe">John Doe</string>
+    <string name="_223_learning_hours">223 learning hours,</string>
 </resources>

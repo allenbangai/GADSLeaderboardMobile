@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="8dp"
     android:background="@color/colorWhite"
     app:cardBackgroundColor="@color/colorWhite"
     app:cardCornerRadius="5dp"
@@ -14,12 +14,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:padding="8dp">
 
         <ImageView
             android:id="@+id/learning_imageView"
-            android:layout_width="100dp"
+            android:layout_width="75dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +42,9 @@
                 android:id="@+id/learning_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="John Doe"
+                android:text="@string/john_doe"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:paddingLeft="5dp"/>
 
@@ -57,9 +57,9 @@
                     android:id="@+id/learning_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="223 learning hours, "
+                    android:text="@string/_223_learning_hours"
                     android:textColor="@color/colorGreyPrimary"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:paddingLeft="5dp"/>
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:text="Kenya"
                     android:textColor="@color/colorGreyPrimary"
-                    android:textSize="18sp"/>
+                    android:textSize="17sp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

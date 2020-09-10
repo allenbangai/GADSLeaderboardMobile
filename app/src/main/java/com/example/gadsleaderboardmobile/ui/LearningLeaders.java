@@ -74,7 +74,7 @@ public class LearningLeaders extends Fragment {
 
     private RecyclerView recyclerView;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
-    private Helper helper = new Helper();
+    private Helper helper = new Helper(getContext());
     private LearningLeadersAdapter learningLeadersAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
