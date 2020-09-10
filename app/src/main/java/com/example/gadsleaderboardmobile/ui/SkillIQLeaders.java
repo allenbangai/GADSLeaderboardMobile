@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.gadsleaderboardmobile.Adapter.LearningLeadersAdapter;
 import com.example.gadsleaderboardmobile.Adapter.SkillIQLeadersAdapter;
-import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
 import com.example.gadsleaderboardmobile.Model.SkillIQLeadersModel;
 import com.example.gadsleaderboardmobile.R;
 import com.example.gadsleaderboardmobile.Util.Helper;
@@ -81,7 +79,7 @@ public class SkillIQLeaders extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_skill_i_q_leaders, container, false);
+        View root = inflater.inflate(R.layout.fragment_skill_iq_leaders, container, false);
 
         recyclerView = root.findViewById(R.id.skill_iq_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -89,10 +87,11 @@ public class SkillIQLeaders extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+        skillIQLeaders();
         return root;
     }
 
-    private void SkillIQLeaders(){
+    private void skillIQLeaders(){
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://gadsapi.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create()).build();
 

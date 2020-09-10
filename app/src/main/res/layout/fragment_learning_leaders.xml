@@ -14,6 +14,6 @@
         android:id="@+id/learning_leaders_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_view_leaening_leaders"/>
+        tools:listitem="@layout/item_view_learning_leaders"/>
 
 </FrameLayout>

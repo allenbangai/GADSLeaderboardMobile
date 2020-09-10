@@ -64,7 +64,7 @@ public class LearningLeadersAdapter extends RecyclerView.Adapter<LearningLeaders
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_view_leaening_leaders, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_view_learning_leaders, parent, false);
         return new LearningLeadersAdapter.ViewHolder(view);
     }
 

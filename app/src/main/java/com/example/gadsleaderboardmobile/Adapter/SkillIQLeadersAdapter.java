@@ -17,7 +17,6 @@ import com.example.gadsleaderboardmobile.Model.SkillIQLeadersModel;
 import com.example.gadsleaderboardmobile.R;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class SkillIQLeadersAdapter extends RecyclerView.Adapter<SkillIQLeadersAdapter.ViewHolder>{
     private Context context;
@@ -65,7 +64,7 @@ public class SkillIQLeadersAdapter extends RecyclerView.Adapter<SkillIQLeadersAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_view_leaening_leaders, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_view_learning_leaders, parent, false);
         return new SkillIQLeadersAdapter.ViewHolder(view);
     }
 
