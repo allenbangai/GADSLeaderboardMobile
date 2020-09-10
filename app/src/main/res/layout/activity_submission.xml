@@ -17,12 +17,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Project Submission"
+        android:layout_marginTop="10dp"
+        android:text="@string/project_submission"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="21"
-        android:textColor="@color/colorAccent"
+        android:textSize="21sp"
+        android:textColor="#FF8E00"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2" />
