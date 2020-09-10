@@ -15,6 +15,8 @@ import com.example.gadsleaderboardmobile.Adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import retrofit2.Retrofit;
+
 public class MainStartActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ViewPager viewPager;
@@ -22,7 +24,8 @@ public class MainStartActivity extends AppCompatActivity {
     private Fragment Melone;
     private TabItem learningLeader, skillIqLeaders;
 
-    ViewPagerAdapter viewPagerAdapter;
+    private ViewPagerAdapter viewPagerAdapter;
+    private Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,8 @@ public class MainStartActivity extends AppCompatActivity {
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
 
     }
 }
