@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.gadsleaderboardmobile.SubmissionActivity;
+
 public class Helper {
     private Intent intent;
     private Context context;
@@ -37,5 +39,11 @@ public class Helper {
 
     public void toastMessage(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    public void gotoSubmissionActivity(){
+        intent = new Intent(context, SubmissionActivity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
     }
 }
