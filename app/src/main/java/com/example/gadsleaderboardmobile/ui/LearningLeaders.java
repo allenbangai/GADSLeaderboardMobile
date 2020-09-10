@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gadsleaderboardmobile.Adapter.LearningLeadersAdapter;
 import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
 import com.example.gadsleaderboardmobile.R;
+import com.example.gadsleaderboardmobile.Util.Helper;
 import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
 import com.example.gadsleaderboardmobile.Util.LeadersRetrofit;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -70,6 +74,8 @@ public class LearningLeaders extends Fragment {
 
     private RecyclerView recyclerView;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
+    private Helper helper = new Helper();
+    private LearningLeadersAdapter learningLeadersAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +93,24 @@ public class LearningLeaders extends Fragment {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<List<LearningLeadersModel>> call = jsonPlaceHolderApi.getLearningLeaders()
+        Call<List<LearningLeadersModel>> call = jsonPlaceHolderApi.getLearningLeaders();
+        call.enqueue(new Callback<List<LearningLeadersModel>>() {
+            @Override
+            public void onResponse(Call<List<LearningLeadersModel>> call, Response<List<LearningLeadersModel>> response) {
+                if(!response.isSuccessful()){
+                    helper.toastMessage("Error Code: " + response.code() + "\n Error Message: " + response.message());
+                    return;
+                }
+
+                List<LearningLeadersModel> learningLeadersModels = response.body();
+                learningLeadersAdapter = new LearningLeadersAdapter(getContext(), learningLeadersModels);
+                recyclerView.setAdapter(learningLeadersAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<LearningLeadersModel>> call, Throwable t) {
+                helper.toastMessage("Error message: " + t.getMessage());
+            }
+        });
     }
 }
