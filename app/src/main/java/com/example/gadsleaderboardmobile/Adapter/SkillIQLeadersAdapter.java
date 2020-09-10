@@ -97,7 +97,7 @@ public class SkillIQLeadersAdapter extends RecyclerView.Adapter<SkillIQLeadersAd
         holder.score.setText(skillIQLeadersModel.getScore() + " skill IQ score, ");
         holder.country.setText(skillIQLeadersModel.getCountry());
         holder.name.setText(skillIQLeadersModel.getName());
-
+        //load image with
         Glide.with(context).load(skillIQLeadersModel.getBadgeUrl()).into(holder.badgeUrl);
     }
 

@@ -3,12 +3,28 @@ package com.example.gadsleaderboardmobile.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gadsleaderboardmobile.Adapter.LearningLeadersAdapter;
+import com.example.gadsleaderboardmobile.Adapter.SkillIQLeadersAdapter;
+import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
+import com.example.gadsleaderboardmobile.Model.SkillIQLeadersModel;
 import com.example.gadsleaderboardmobile.R;
+import com.example.gadsleaderboardmobile.Util.Helper;
+import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +73,49 @@ public class SkillIQLeaders extends Fragment {
         }
     }
 
+    private RecyclerView recyclerView;
+    private Helper helper = new Helper(getContext());
+    private JsonPlaceHolderApi jsonPlaceHolderApi;
+    private SkillIQLeadersAdapter skillIQLeadersAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_skill_i_q_leaders, container, false);
+        View root = inflater.inflate(R.layout.fragment_skill_i_q_leaders, container, false);
+
+        recyclerView = root.findViewById(R.id.skill_iq_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        return root;
+    }
+
+    private void SkillIQLeaders(){
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://gadsapi.herokuapp.com")
+                .addConverterFactory(GsonConverterFactory.create()).build();
+
+        jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+
+        Call<List<SkillIQLeadersModel>> callList = jsonPlaceHolderApi.getIQLeaders();
+        callList.enqueue(new Callback<List<SkillIQLeadersModel>>() {
+            @Override
+            public void onResponse(Call<List<SkillIQLeadersModel>> call, Response<List<SkillIQLeadersModel>> response) {
+                if(!response.isSuccessful()){
+                    helper.toastMessage("Error Code: " + response.code() + "\n Error Message: " + response.message());
+                    return;
+                }
+
+                List<SkillIQLeadersModel> skillIQLeadersModels = response.body();
+                skillIQLeadersAdapter = new SkillIQLeadersAdapter(getContext(), skillIQLeadersModels);
+                recyclerView.setAdapter(skillIQLeadersAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<SkillIQLeadersModel>> call, Throwable t) {
+                helper.toastMessage("Error message: " + t.getMessage());
+            }
+        });
     }
 }
