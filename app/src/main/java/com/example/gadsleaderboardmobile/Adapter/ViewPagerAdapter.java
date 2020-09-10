@@ -41,7 +41,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         LearningLeaders leaders = new LearningLeaders();
 
         switch (position){
-            case 2:
+            case 1:
                 return  new SkillIQLeaders();
             default:
                 return new LearningLeaders();

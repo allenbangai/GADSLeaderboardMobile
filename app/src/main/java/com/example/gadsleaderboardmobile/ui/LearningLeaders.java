@@ -3,6 +3,7 @@ package com.example.gadsleaderboardmobile.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -14,7 +15,6 @@ import com.example.gadsleaderboardmobile.Model.LearningLeadersModel;
 import com.example.gadsleaderboardmobile.R;
 import com.example.gadsleaderboardmobile.Util.Helper;
 import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
-import com.example.gadsleaderboardmobile.Util.LeadersRetrofit;
 
 import java.util.List;
 
@@ -83,7 +83,12 @@ public class LearningLeaders extends Fragment {
         View root = inflater.inflate(R.layout.fragment_learning_leaders, container, false);
 
         recyclerView = root.findViewById(R.id.learning_leaders_recycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.hasFixedSize();
 
+        displayLearningLeaders();
         return root;
     }
 
