@@ -9,4 +9,8 @@
     <string name="google_africa">Google Africa</string>
     <string name="developer_scholarship">Developer Scholarship</string>
     <string name="project_submission">Project Submission</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="github_link">Project on GITHUB (link)</string>
 </resources>
