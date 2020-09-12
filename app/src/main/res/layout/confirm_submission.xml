@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cancel_submission_view"
-    android:backgroundTint="#9F9F9F"
+    android:background="#80707070"
     android:backgroundTintMode="screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="21sp"
                 android:text="Are You Sure"
+                android:textColor="@color/colorGrey"
                 android:textStyle="bold"
                 android:padding="5dp"
                 />
@@ -60,9 +61,9 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/colorWhite"
-                app:srcCompat="@drawable/ic_cancel"
+                app:srcCompat="@drawable/question_icon"
                 tools:srcCompat="@drawable/question_icon"/>
 
         </LinearLayout>
@@ -120,6 +121,7 @@
             android:layout_height="wrap_content"
             android:text="@string/submission_successful"
             android:textSize="21sp"
+            android:textColor="@color/colorGrey"
             android:textStyle="bold"
             android:padding="15dp"
             android:layout_marginTop="5dp"/>
@@ -149,6 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/submission_not_successful"
+            android:textColor="@color/colorGrey"
             android:textSize="21sp"
             android:textStyle="bold"
             android:padding="15dp"

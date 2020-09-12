@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SubmissionActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/NoActionBarWithBackgroun1">
         </activity>
 
         <activity
