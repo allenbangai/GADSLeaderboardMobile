@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,6 +24,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.gadsleaderboardmobile.Model.SubmissionModel;
 import com.example.gadsleaderboardmobile.Util.Helper;
 import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -138,8 +142,25 @@ public class SubmissionActivity extends AppCompatActivity {
                         submissionNotSuccessful.setVisibility(View.VISIBLE);
                         validateSubmission.setVisibility(View.GONE);
                     }
-                }
-        );
+                })
+
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put(fieldFirstName, submissionModel.getFistName());
+                params.put(fieldLastName, submissionModel.getLastName());
+                params.put(fieldEmailAddress, submissionModel.getEmailAddress());
+                params.put(fieldGithubLink, submissionModel.getGithubLink());
+                return params;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(request);
 
         /*
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://docs.google.com/forms/d/e/")
