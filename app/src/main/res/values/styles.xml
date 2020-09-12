@@ -9,6 +9,7 @@
 
     <style name="NoActionBarWithBackgroun1" parent="Theme.AppCompat.NoActionBar">
         <item name="background">@drawable/launch2</item>
+        <item name="windowActionBar">@drawable/launch2</item>
     </style>
 
     <style name="NoActionBarWithBackgroun2" parent="Theme.AppCompat.NoActionBar">
