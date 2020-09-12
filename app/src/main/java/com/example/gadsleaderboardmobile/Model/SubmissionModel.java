@@ -1,5 +1,7 @@
 package com.example.gadsleaderboardmobile.Model;
 
+import retrofit2.http.Field;
+
 public class SubmissionModel {
     String fistName;
     String lastName;

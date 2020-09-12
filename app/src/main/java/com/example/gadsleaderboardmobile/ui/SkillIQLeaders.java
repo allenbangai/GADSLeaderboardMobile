@@ -72,7 +72,7 @@ public class SkillIQLeaders extends Fragment {
     }
 
     private RecyclerView recyclerView;
-    private Helper helper = new Helper(getContext());
+    private Helper helper;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
     private SkillIQLeadersAdapter skillIQLeadersAdapter;
     @Override
@@ -80,6 +80,7 @@ public class SkillIQLeaders extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_skill_iq_leaders, container, false);
+        helper = new Helper(root.getContext());
 
         recyclerView = root.findViewById(R.id.skill_iq_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

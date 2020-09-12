@@ -1,11 +1,13 @@
 package com.example.gadsleaderboardmobile.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * create an instance of this fragment.
  */
 public class LearningLeaders extends Fragment {
+
+    private static final String logat = "com.example.gadsleaderboardmobile.ui.LearningLeaders";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,9 +117,11 @@ public class LearningLeaders extends Fragment {
                 recyclerView.setAdapter(learningLeadersAdapter);
             }
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onFailure(Call<List<LearningLeadersModel>> call, Throwable t) {
                 helper.toastMessage("Error message: " + t.getMessage());
+                Log.d( logat, "Error message: " + t.getMessage());
             }
         });
     }
