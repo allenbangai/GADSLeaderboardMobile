@@ -3,9 +3,13 @@ package com.example.gadsleaderboardmobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gadsleaderboardmobile.Model.SubmissionModel;
@@ -15,10 +19,15 @@ import java.util.regex.Pattern;
 
 public class SubmissionActivity extends AppCompatActivity {
 
+    private LinearLayout submissionlayout, submissionInfoLayout, cancelSubmissionLayout;
+    private Layout layout;
     private EditText firstName, lastName, emailAddress, githubLink;
-    private TextView submit;
+    private TextView submit, confirmSubmit;
     private Helper helper;
     private SubmissionModel submissionModel;
+    private ImageView cancel;
+    private View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +39,33 @@ public class SubmissionActivity extends AppCompatActivity {
         emailAddress = findViewById(R.id.email_address);
         githubLink = findViewById(R.id.github_project_link);
 
+        cancelSubmissionLayout = findViewById(R.id.cancel_submission_view);
+        cancelSubmissionLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelSubmission();
+            }
+        });
+
+        submissionlayout = findViewById(R.id.submission_layout);
+        submissionInfoLayout = findViewById(R.id.submission_info_xml);
+
+        cancel = findViewById(R.id.cancel_submission);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelSubmission();
+            }
+        });
+
+        confirmSubmit = findViewById(R.id.submit);
+        confirmSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmSubmission();
+            }
+        });
+
         submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +73,13 @@ public class SubmissionActivity extends AppCompatActivity {
                 submitProject();
             }
         });
+
+
+    }
+
+    private void confirmSubmission() {
+        submissionlayout.setVisibility(View.VISIBLE);
+        submissionInfoLayout.setVisibility(View.GONE);
     }
 
     private void submitProject() {
@@ -66,7 +109,12 @@ public class SubmissionActivity extends AppCompatActivity {
             githubLink.requestFocus();
         }else{
             submissionModel = new SubmissionModel(firstNameStr, lastNameStr, emailAddressStr, githubLinkStr);
-
+            submissionInfoLayout.setVisibility(View.VISIBLE);
+            submissionlayout.setVisibility(View.GONE);
         }
+    }
+
+    public void cancelSubmission(){
+
     }
 }
