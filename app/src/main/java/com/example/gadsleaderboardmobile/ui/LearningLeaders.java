@@ -74,13 +74,14 @@ public class LearningLeaders extends Fragment {
 
     private RecyclerView recyclerView;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
-    private Helper helper = new Helper(getContext());
+    private Helper helper;
     private LearningLeadersAdapter learningLeadersAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_learning_leaders, container, false);
+        helper = new Helper(root.getContext());
 
         recyclerView = root.findViewById(R.id.learning_leaders_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
