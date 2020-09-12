@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cancel_submission_view"
+    android:backgroundTint="#9F9F9F"
+    android:backgroundTintMode="screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="6"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/validate_submission"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        android:background="@drawable/circular_background4"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="end"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/cancel_submission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorWhite"
+                app:srcCompat="@drawable/ic_cancel"
+                tools:srcCompat="@drawable/ic_cancel" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:text="Are You Sure"
+                android:textStyle="bold"
+                android:padding="5dp"
+                />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorWhite"
+                app:srcCompat="@drawable/ic_cancel"
+                tools:srcCompat="@drawable/question_icon"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/colorBrightOrange"
+                android:textAlignment="center"
+                android:textSize="21sp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/circular_background2"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/submission_successful"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/circular_background4"
+        android:orientation="vertical"
+        android:layout_weight="1.5"
+        android:weightSum="3">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_validated"
+            android:padding="10dp"
+            android:background="@color/colorGreen"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submission_successful"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/submission_not_successful"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/circular_background4"
+        android:orientation="vertical"
+        android:layout_weight="1.8"
+        android:weightSum="3">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_danger"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submission_not_successful"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>
