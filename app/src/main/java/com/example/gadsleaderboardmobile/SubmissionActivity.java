@@ -3,6 +3,7 @@ package com.example.gadsleaderboardmobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -13,19 +14,30 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.gadsleaderboardmobile.Model.SubmissionModel;
 import com.example.gadsleaderboardmobile.Util.Helper;
 import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SubmissionActivity extends AppCompatActivity {
 
     private static final String logat = "com.example.gadsleaderboardmobile.ui.SubmissionActivity";
+    private static final String fieldFirstName = "entry.1824927963";
+    private static final String fieldLastName = "entry.1877115667";
+    private static final String fieldEmailAddress = "entry.2006916086";
+    private static final String fieldGithubLink = "entry.284483984";
+    private static final String fieldTrack = "entry.642603327";
+    private static final String url = "https://docs.google.com/forms/d/e/1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse";
 
     private LinearLayout submissionLayout, validateSubmission, submissionInfoLayout, submissionSuccessful, submissionNotSuccessful;
     private RelativeLayout layout;
@@ -34,6 +46,7 @@ public class SubmissionActivity extends AppCompatActivity {
     private Helper helper;
     private SubmissionModel submissionModel;
     private ImageView cancel;
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,14 +97,53 @@ public class SubmissionActivity extends AppCompatActivity {
             }
         });
 
-
+        queue = Volley.newRequestQueue(this);
     }
 
     JsonPlaceHolderApi jsonPlaceHolderApi;
     private void confirmSubmission() {
+        helper.progressDialogStart("Please Wait", "Subimssion is going through");
+
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+
+                url,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.length() > 0){
+                            helper.toastMessage("successfully posted");
+
+                            submissionSuccessful.setVisibility(View.VISIBLE);
+                            validateSubmission.setVisibility(View.GONE);
+                        }else{
+                            helper.toastMessage("try again");
+
+                            submissionNotSuccessful.setVisibility(View.VISIBLE);
+                            validateSubmission.setVisibility(View.GONE);
+                        }
+                        helper.progressDialogEnd();
+                    }
+                },
+
+                new Response.ErrorListener() {
+                    @SuppressLint("LongLogTag")
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        helper.progressDialogEnd();
+                        helper.toastMessage( "Error Message \n Submission was not succesfull : " + error.getMessage());
+                        Log.d(logat, "Error message: \" + t.getMessage()");
+
+                        submissionNotSuccessful.setVisibility(View.VISIBLE);
+                        validateSubmission.setVisibility(View.GONE);
+                    }
+                }
+        );
+
+        /*
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://docs.google.com/forms/d/e/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
-
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
         Call<SubmissionModel> call = jsonPlaceHolderApi.createSubmission(submissionModel.getFistName(), submissionModel.getLastName(),
@@ -122,6 +174,9 @@ public class SubmissionActivity extends AppCompatActivity {
                 validateSubmission.setVisibility(View.GONE);
             }
         });
+
+
+         */
     }
 
     private void submitProject() {
@@ -158,6 +213,7 @@ public class SubmissionActivity extends AppCompatActivity {
 
     public void cancelSubmission(){
         submissionLayout.setVisibility(View.VISIBLE);
+        validateSubmission.setVisibility(View.VISIBLE);
         layout.setVisibility(View.GONE);
     }
 }
