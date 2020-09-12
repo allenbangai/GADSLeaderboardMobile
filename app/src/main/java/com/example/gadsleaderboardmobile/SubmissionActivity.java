@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -18,8 +16,6 @@ import android.widget.TextView;
 import com.example.gadsleaderboardmobile.Model.SubmissionModel;
 import com.example.gadsleaderboardmobile.Util.Helper;
 import com.example.gadsleaderboardmobile.Util.JsonPlaceHolderApi;
-
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +27,7 @@ public class SubmissionActivity extends AppCompatActivity {
 
     private static final String logat = "com.example.gadsleaderboardmobile.ui.SubmissionActivity";
 
-    private LinearLayout submissionlayout, validateSubmission, submissionInfoLayout, submissionSuccessful, submissionNotSuccessful;
+    private LinearLayout submissionLayout, validateSubmission, submissionInfoLayout, submissionSuccessful, submissionNotSuccessful;
     private RelativeLayout layout;
     private EditText firstName, lastName, emailAddress, githubLink;
     private TextView submit, confirmSubmit;
@@ -50,7 +46,7 @@ public class SubmissionActivity extends AppCompatActivity {
         emailAddress = findViewById(R.id.email_address);
         githubLink = findViewById(R.id.github_project_link);
 
-        submissionlayout = findViewById(R.id.submission_layout);
+        submissionLayout = findViewById(R.id.submission_layout);
         layout = findViewById(R.id.submission_info_xml);
         submissionSuccessful = findViewById(R.id.submission_successful);
         submissionNotSuccessful = findViewById(R.id.submission_not_successful);
@@ -98,7 +94,8 @@ public class SubmissionActivity extends AppCompatActivity {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<SubmissionModel> call = jsonPlaceHolderApi.createSubmission(submissionModel);
+        Call<SubmissionModel> call = jsonPlaceHolderApi.createSubmission(submissionModel.getFistName(), submissionModel.getLastName(),
+                submissionModel.getEmailAddress(), submissionModel.getGithubLink());
         call.enqueue(new Callback<SubmissionModel>() {
             @Override
             public void onResponse(Call<SubmissionModel> call, Response<SubmissionModel> response) {
@@ -155,12 +152,12 @@ public class SubmissionActivity extends AppCompatActivity {
         }else{
             submissionModel = new SubmissionModel(firstNameStr, lastNameStr, emailAddressStr, githubLinkStr);
             layout.setVisibility(View.VISIBLE);
-            submissionlayout.setVisibility(View.GONE);
+            submissionLayout.setVisibility(View.GONE);
         }
     }
 
     public void cancelSubmission(){
-        submissionlayout.setVisibility(View.VISIBLE);
+        submissionLayout.setVisibility(View.VISIBLE);
         layout.setVisibility(View.GONE);
     }
 }

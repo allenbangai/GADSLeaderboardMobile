@@ -16,18 +16,18 @@ public class SubmissionModel {
     }
 
     public String getFistName() {
-        return fistName + ".1824927963";
+        return fistName;
     }
 
     public String getLastName() {
-        return lastName + ".1877115667";
+        return lastName;
     }
 
     public String getEmailAddress() {
-        return emailAddress + ".2006916086";
+        return emailAddress;
     }
 
     public String getGithubLink() {
-        return githubLink + ".284483984";
+        return githubLink;
     }
 }
