@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.gadsleaderboardmobile.Model.SubmissionModel;
 import com.example.gadsleaderboardmobile.Util.Helper;
 
 import java.util.regex.Pattern;
@@ -17,6 +18,7 @@ public class SubmissionActivity extends AppCompatActivity {
     private EditText firstName, lastName, emailAddress, githubLink;
     private TextView submit;
     private Helper helper;
+    private SubmissionModel submissionModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class SubmissionActivity extends AppCompatActivity {
             helper.toastMessage("web link field is empty");
             githubLink.requestFocus();
         }else{
+            submissionModel = new SubmissionModel(firstNameStr, lastNameStr, emailAddressStr, githubLinkStr);
 
         }
     }
